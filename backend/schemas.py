@@ -1,0 +1,50 @@
+from pydantic import BaseModel
+from typing import List, Optional
+
+# ----------------------
+# User Schemas
+# ----------------------
+class UserCreate(BaseModel):
+    full_name: str
+    email: str
+    phone: str
+    password: str
+
+class UserOut(BaseModel):
+    id: int
+    full_name: str
+    email: str
+    phone: str
+    role: str
+
+    # Pydantic v2: replace orm_mode with from_attributes
+    model_config = {
+        "from_attributes": True
+    }
+
+# ----------------------
+# Trusted Contacts Schemas
+# ----------------------
+class TrustedContactCreate(BaseModel):
+    name: str
+    phone: str
+    layer: Optional[int] = 1
+
+class TrustedContactOut(BaseModel):
+    id: int
+    name: str
+    phone: str
+    layer: int
+
+    model_config = {
+        "from_attributes": True
+    }
+
+# ----------------------
+# SOS / Forum Schemas
+# ----------------------
+class SOSCreate(BaseModel):
+    message: str
+
+class ForumPostCreate(BaseModel):
+    content: str
