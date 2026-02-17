@@ -23,7 +23,7 @@ app.add_middleware(
 models.Base.metadata.create_all(bind=database.engine)
 
 # Include routers
-app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
+app.include_router(auth.router)
 app.include_router(trusted_contacts.router, prefix="/trusted_contacts", tags=["Trusted Contacts"])
 app.include_router(forum.router, prefix="/forum", tags=["Community Forum"])
 app.include_router(sos.router, prefix="/sos", tags=["SOS"])
